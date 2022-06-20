@@ -8,6 +8,7 @@ class Note(BaseModel):
     content: str
     time_created: datetime
     time_edited: Optional[datetime]
+    owner_id: str
 
     class Config:
         orm_mode = True

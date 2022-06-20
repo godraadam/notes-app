@@ -14,7 +14,7 @@ def login(payload: schemas.user.UserLogin, db: Session = Depends(get_db)):
         # User not found
         raise HTTPException(status_code=404, detail="No such user found!")
     if not security.verify_password(payload.password, user.password):
-        # Password incorrecr
+        # Password incorrect
         raise HTTPException(status_code=403, detail="Password incorrect")
     access_token = security.create_access_token({"username":user.username})
     return {"access_token": access_token, "token_type": "bearer"}
